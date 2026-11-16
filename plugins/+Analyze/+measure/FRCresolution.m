@@ -132,6 +132,7 @@ for k=1:p.frc_blocks
     end
     bfrc(indrange)=side;
 end
+bfrc = cast(bfrc,'single');  % add by fushuang, sometimes there is nan in the locs, and logical array raises an error when regroup
 end
 
 function [frc_out,frc_num]=getFRC(image1,image2)

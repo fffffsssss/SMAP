@@ -247,8 +247,11 @@ function tiffile=getrawtifpath(locData)
         return
     elseif isfield(locData.files.file(1).info,'imagefile')
         tiffile=locData.files.file(1).info.imagefile;
-    else
+    elseif isfield(locData.files.file(1).info, 'basefile')
         tiffile=locData.files.file(1).info.basefile;
+    else
+        tiffile='';
+        return
     end
     if ~exist(tiffile,'file')
         disp('Get2CIntImagesWF ine 40: check if it works')
