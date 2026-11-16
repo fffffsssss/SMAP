@@ -9,6 +9,7 @@ classdef LocalizationData<interfaces.GuiParameterInterface
         SE %siteexplorer object, linked here why?
         history={};
         warning=false;
+        pluginresults;
 %         iscopy=true;
     end
     
@@ -717,6 +718,7 @@ classdef LocalizationData<interfaces.GuiParameterInterface
             locout.SE=obj.SE.copy;
              locout.SE.locData=locout;
              locout.history=obj.history;
+            locout.pluginresults=obj.pluginresults; 
              
             if nargin<2
                 locout.loc=obj.loc;
