@@ -126,7 +126,11 @@ classdef GuiMainSMAP<interfaces.GuiModuleInterface & interfaces.LocDataInterface
                       mkdir(outdir)
                  end
                 for k=1:length(docfiles)
-                    worked=worked|savewebfile([outdir docfiles{k}] ,[mainaddress docfiles{k}]);
+                    if exist([outdir docfiles{k}],'file')==2
+                        worked=true;
+                    else
+                        worked=worked|savewebfile([outdir docfiles{k}] ,[mainaddress docfiles{k}]);
+                    end
                 end
             if ~worked
                 disp(['could not download and save documentation pdfs. Help might not work. Make sure you have write access to settings. Move the settings directory to ' possibledirs]);
